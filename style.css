@@ -43,8 +43,10 @@ input{
 .styling{
     margin-bottom: 20px;
 }
-.form label{
+.label-container{
     color: hsl(186, 14%, 43%);
+    display: flex;
+    justify-content: space-between;
 }
 .inputForm input{
     text-align: end;

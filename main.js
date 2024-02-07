@@ -4,6 +4,10 @@ const people = document.getElementById("people");
 const tipAmount = document.querySelector(".tip-amount");
 const totalPerson = document.querySelector(".total-person");
 const reset = document.querySelector(".reset-btn");
+const billError = document.querySelector('.billError')
+const peopleError = document.querySelector('.peopleError')
+const inputForm = document.querySelectorAll('.inputForm')
+
 
 let tipPercent = 0;
 
@@ -15,13 +19,13 @@ tips.forEach((tip) => {
   });
 });
 
-function errorCheck(input, msg){
+function errorCheck(input, msg, output){
     if (input === '' || input === null){
-
+        output.innerText = "Can't be zero"
     }
-    else if(!(input.value > 1 && input === people ? 1000 :)){
-
-    }
+    else if(!(input.value > 1 && input === people ? input.value < 1000 : input.value <= 999999)){
+        output.innerText = msg
+    }   
 }
 
 function calculate(tip = "0") {

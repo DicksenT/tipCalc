@@ -34,7 +34,10 @@
     <main>
       <form action="" class="form">
         <div class="styling">
-          <label for="bill"> Bill</label>
+          <div class="label-container">
+            <label for="bill"> Bill</label>
+            <p class="billError error"></p>
+          </div>
           <div class="inputForm">
             <img src="images/icon-dollar.svg" alt="" />
             <input type="number" id="bill" name="bill" min="0" />
@@ -52,7 +55,10 @@
           </ul>
         </div>
         <div class="styling">
-          <label for="people">Number of People</label>
+          <div class="label-container">
+            <label for="people">Number of People</label>
+            <p class="peopleError error"></p>
+          </div>
           <div class="inputForm">
             <img src="images/icon-person.svg" alt="" />
             <input value="1" type="number" name="people" id="people" min="0" />
