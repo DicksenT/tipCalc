@@ -8,23 +8,28 @@
 .attribution{
     display: none;
 }
-h1{
-    font-size: 20px;
-    width: 50px;
-}
+
 body{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
     height: 100dvh;
     background-color: hsl(185, 41%, 84%);
+}
+h1{
+    font-size: 36px;
+    width: 120px;
+    word-wrap: break-word;
+    letter-spacing: 5px;
+    color: hsl(183, 100%, 15%);
 }
 main{
     width: 375px;
     background-color: white;
     border-radius: 16px;
     padding: 20px 32px;
+    margin-top: 5px;
 }
 
 .inputForm{
