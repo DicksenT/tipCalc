@@ -38,7 +38,7 @@
             <label for="bill"> Bill</label>
             <p class="billError error"></p>
           </div>
-          <div class="inputForm">
+          <div class="inputForm billForm">
             <img src="images/icon-dollar.svg" alt="" />
             <input type="number" id="bill" name="bill" min="0" />
           </div>
@@ -46,12 +46,17 @@
         <div class="styling">
           <label for="tip">Select Tip %</label>
           <ul class="tips">
-            <li class="tip" value="5">5%</li>
-            <li class="tip" value="10">10%</li>
-            <li class="tip" value="15">15%</li>
-            <li class="tip" value="25">25%</li>
-            <li class="tip" value="50">50%</li>
-            <input min="0" type="number" class="tip" placeholder="custom" />
+            <li class="tip tip-style" value="5">5%</li>
+            <li class="tip tip-style" value="10">10%</li>
+            <li class="tip tip-style" value="15">15%</li>
+            <li class="tip tip-style" value="25">25%</li>
+            <li class="tip tip-style" value="50">50%</li>
+            <input
+              min="0"
+              type="number"
+              class="tip-style tipInput tip"
+              placeholder="custom"
+            />
           </ul>
         </div>
         <div class="styling">
@@ -59,7 +64,7 @@
             <label for="people">Number of People</label>
             <p class="peopleError error"></p>
           </div>
-          <div class="inputForm">
+          <div class="inputForm peopleForm">
             <img src="images/icon-person.svg" alt="" />
             <input value="1" type="number" name="people" id="people" min="0" />
           </div>
