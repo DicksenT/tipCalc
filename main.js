@@ -12,6 +12,7 @@ const tipInput = document.querySelector(".tipInput");
 
 let tipPercent = 0;
 
+//Event Delegation for each input and tip
 bill.addEventListener("input", calculate);
 people.addEventListener("input", calculate);
 tips.forEach((tip) => {
@@ -22,15 +23,19 @@ tips.forEach((tip) => {
 tipInput.addEventListener("input", () => {
   tipCheck(tipInput);
 });
+
+// tipCheck Function because there's 2 kind of tip, list button and input
 function tipCheck(tip) {
   tips.forEach((tip) => {
     tip.classList.remove("active");
   });
   tip.classList.add("active");
   tipPercent = tip.value;
-  console.log(tipPercent);
   calculate();
 }
+
+//error Checking function to ensure the input number is not empty
+//dont need to check if it's number because using number type
 function errorCheck() {
   noError = true;
   function validateError(input, form, output) {
@@ -38,7 +43,9 @@ function errorCheck() {
       output.innerText = "Please input valid number";
       form.style.borderColor = "salmon";
       noError = false;
-    } else {
+    }
+    //incase the input is correct, return all to 'normal'
+    else {
       output.innerText = "";
       form.style.borderColor = "hsl(189, 41%, 97%)";
     }
@@ -47,29 +54,37 @@ function errorCheck() {
   validateError(people, peopleForm, peopleError);
   return noError;
 }
+
+//main function, to directly calculate and display for each input(based on event delegation)
 let totalTip = 0;
 function calculate() {
+  //only do the calculation if it pass errorCheck or the noError is true
   if (errorCheck()) {
+    //just to make sure tipPercent isn't NaN or null
     if (tipPercent) {
       totalTip = bill.value * (tipPercent / 100);
     }
     eachTip = totalTip / people.value;
     totalPay = (parseInt(bill.value) + totalTip) / people.value;
+
+    // setting up maximum number of the calculation to prevent ui number overflow
+    let maxDisplayNumber = 999999;
     tipAmount.innerText =
-      eachTip > 999999
-        ? "$999999+"
+      eachTip > maxDisplayNumber
+        ? `$${maxDisplayNumber}+`
         : eachTip % 1 != 0
         ? `$${eachTip.toFixed(2)}`
         : `$${eachTip}`;
     totalPerson.innerText =
-      totalPay > 999999
-        ? "$999999+"
+      totalPay > maxDisplayNumber
+        ? `$${maxDisplayNumber}+`
         : totalPay % 1 != 0
         ? `$${totalPay.toFixed(2)}`
         : `$${totalPay}`;
   }
 }
 
+//reset button
 reset.addEventListener("click", () => {
   tipAmount.innerText = "$0";
   totalPerson.innerText = "$0";
