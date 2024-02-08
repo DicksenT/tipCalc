@@ -15,21 +15,21 @@ let tipPercent = 0;
 bill.addEventListener("input", calculate);
 people.addEventListener("input", calculate);
 tips.forEach((tip) => {
-  tip.addEventListener('click', ()=>{
-    tipCheck(tip)
-  })
+  tip.addEventListener("click", () => {
+    tipCheck(tip);
+  });
 });
-tipInput.addEventListener("input", ()=>{
-    tipCheck(tipInput)
+tipInput.addEventListener("input", () => {
+  tipCheck(tipInput);
 });
-function tipCheck(tip){
-    tips.forEach((tip) => {
-      tip.classList.remove("active");
-    });
-    tip.classList.add("active");
-    tipPercent = tip.value;
-    console.log(tipPercent);
-    calculate();
+function tipCheck(tip) {
+  tips.forEach((tip) => {
+    tip.classList.remove("active");
+  });
+  tip.classList.add("active");
+  tipPercent = tip.value;
+  console.log(tipPercent);
+  calculate();
 }
 function errorCheck() {
   noError = true;
@@ -47,17 +47,25 @@ function errorCheck() {
   validateError(people, peopleForm, peopleError);
   return noError;
 }
-
-
-
 let totalTip = 0;
 function calculate() {
   if (errorCheck()) {
-    
     if (tipPercent) {
       totalTip = bill.value * (tipPercent / 100);
     }
+    eachTip = totalTip / people.value;
     totalPay = (parseInt(bill.value) + totalTip) / people.value;
-    console.log(totalPay);
+    tipAmount.innerText = eachTip <= 999999 ? `$${eachTip}` : `$999999+`;
+    totalPerson.innerText = totalPay <= 999999 ? `$${totalPay}` : `$999999+`;
   }
 }
+
+reset.addEventListener("click", () => {
+  tipAmount.innerText = "$0";
+  totalPerson.innerText = "$0";
+  tips.forEach((tip) => {
+    tip.classList.remove("active");
+  });
+  bill.value = "";
+  people.value = 1;
+});
