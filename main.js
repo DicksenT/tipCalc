@@ -35,12 +35,12 @@ function errorCheck() {
   noError = true;
   function validateError(input, form, output) {
     if (input.value === "" || input.value === null || input.value == 0) {
-      output.innerText = "Can't be zero";
-      form.style.border = "1px solid salmon";
+      output.innerText = "Please input valid number";
+      form.style.borderColor = "salmon";
       noError = false;
     } else {
       output.innerText = "";
-      form.style.border = "none";
+      form.style.borderColor = "hsl(189, 41%, 97%)";
     }
   }
   validateError(bill, billForm, billError);
@@ -55,8 +55,18 @@ function calculate() {
     }
     eachTip = totalTip / people.value;
     totalPay = (parseInt(bill.value) + totalTip) / people.value;
-    tipAmount.innerText = eachTip <= 999999 ? `$${eachTip}` : `$999999+`;
-    totalPerson.innerText = totalPay <= 999999 ? `$${totalPay}` : `$999999+`;
+    tipAmount.innerText =
+      eachTip > 999999
+        ? "$999999+"
+        : eachTip % 1 != 0
+        ? `$${eachTip.toFixed(2)}`
+        : `$${eachTip}`;
+    totalPerson.innerText =
+      totalPay > 999999
+        ? "$999999+"
+        : totalPay % 1 != 0
+        ? `$${totalPay.toFixed(2)}`
+        : `$${totalPay}`;
   }
 }
 

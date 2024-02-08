@@ -34,6 +34,7 @@ main{
     justify-content: space-between;
     padding: 4px 0 4px 16px;
     border-radius: 6px;
+    border: 1px solid hsl(189, 41%, 97%);
 }
 input{
     background-color: transparent;
@@ -60,6 +61,7 @@ input{
     color: hsl(183, 100%, 15%);
     font-weight: 700;
     padding-right: 16px;
+
 }
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -113,7 +115,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .result-num{
     color: hsl(172, 67%, 45%);
     font-size: 24px;
-    width: 70%;
+    width: 75%;
     text-align: end;
 }
 .blur{
@@ -161,6 +163,6 @@ input[type="number"]::-webkit-inner-spin-button {
         margin-bottom: 16px;
     }
     .result-num{
-        font-size: 40px;
+        font-size: 36px;
     }
 }
